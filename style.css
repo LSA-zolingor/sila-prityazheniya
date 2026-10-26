@@ -1,0 +1,131 @@
+/* Layout: одна колонка 72rem, полоса-шапка; цифры оформлены как жёлтые номера мотоциклов */
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --ink: #16202b;
+  --muted: #566372;
+  --line: #d9dfe6;
+  --plate: #f2b705;
+  --plate-ink: #16202b;
+  --accent: #1d4f91;
+  --band: #16202b;
+  --band-ink: #eef2f6;
+  --display: "Russo One", "Arial Black", system-ui, sans-serif;
+  --body: "Golos Text", "PT Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11171e; --surface: #18212b; --ink: #e8edf2; --muted: #9aa8b6; --line: #2a3643;
+    --accent: #7fb0f0; --band: #0b1015; --band-ink: #e8edf2; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11171e; --surface: #18212b; --ink: #e8edf2; --muted: #9aa8b6; --line: #2a3643;
+  --accent: #7fb0f0; --band: #0b1015; --band-ink: #e8edf2; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+}
+img { max-width: 100%; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 3px solid var(--plate); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.1rem, 6vw, 3.6rem); }
+h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0; }
+
+.wrap {
+  max-width: 72rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Шапка */
+.top { background: var(--band); color: var(--band-ink); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+.brand-mark {
+  width: 44px; height: 44px; border-radius: 6px; background: var(--plate); color: var(--plate-ink);
+  display: grid; place-items: center; font-family: var(--display); font-size: 1.15rem; letter-spacing: .02em;
+}
+.brand-name { font-family: var(--display); font-size: 1.15rem; line-height: 1.1; }
+.brand-sub { display: block; font-size: .78rem; opacity: .75; font-family: var(--body); letter-spacing: .02em; }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.nav a {
+  color: var(--band-ink); text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: .95rem;
+}
+.nav a:hover { background: rgba(255,255,255,.08); }
+.nav a[aria-current="page"] { background: var(--plate); color: var(--plate-ink); }
+
+/* Первый экран */
+.hero { padding-block: 56px 40px; display: grid; gap: 18px; }
+.eyebrow { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 600; }
+.lead { font-size: 1.2rem; max-width: 40rem; color: var(--muted); }
+
+main section { padding-block: 36px; border-top: 1px solid var(--line); display: grid; gap: 20px; }
+main section:first-of-type { border-top: 0; }
+.prose { max-width: 42rem; display: grid; gap: 14px; }
+
+/* Цифры — номерные таблички */
+.plates { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 16px; }
+.plate { display: grid; gap: 10px; align-content: start; }
+.plate b {
+  justify-self: start; background: var(--plate); color: var(--plate-ink); font-family: var(--display); font-weight: 400;
+  font-size: 2rem; line-height: 1; padding: 10px 14px 8px; border-radius: 8px; font-variant-numeric: tabular-nums;
+}
+.plate span { color: var(--muted); font-size: .98rem; }
+
+/* Списки людей и проектов */
+.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 16px; align-items: start; }
+.person { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 6px; align-content: start; }
+.person .role { font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.person h3 { font-family: var(--body); font-weight: 700; font-size: 1.08rem; }
+.person p { font-size: .96rem; color: var(--muted); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.tags li { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: .95rem; background: var(--surface); }
+
+.project { display: grid; grid-template-columns: 9rem 1fr; gap: 8px 28px; padding-block: 22px; border-top: 1px solid var(--line); }
+.project:first-of-type { border-top: 0; }
+.project .years { font-family: var(--display); font-size: 1.05rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.project .body { display: grid; gap: 8px; min-width: 0; max-width: 46rem; }
+.project .meta { font-size: .92rem; color: var(--muted); }
+.badge { display: inline-block; background: var(--plate); color: var(--plate-ink); font-size: .78rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: .03em; vertical-align: middle; }
+
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-block; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+.btn.primary { background: var(--plate); color: var(--plate-ink); border-color: var(--plate); }
+
+/* Отчёты */
+.table-box { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; max-width: 46rem; font-size: .98rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.total td { font-weight: 700; }
+.docs { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; max-width: 46rem; }
+.docs li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 2px; }
+.docs .hint { color: var(--muted); font-size: .92rem; }
+
+.req { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; grid-template-columns: max-content 1fr; gap: 6px 20px; max-width: 46rem; }
+.req dt { color: var(--muted); font-size: .92rem; }
+.req dd { margin: 0; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+
+/* Подвал */
+.foot { background: var(--band); color: var(--band-ink); margin-top: 48px; }
+.foot .wrap { padding-block: 28px; display: grid; gap: 8px; font-size: .92rem; }
+.foot a { color: var(--band-ink); }
+.foot .small { opacity: .7; }
+
+@media (max-width: 640px) {
+  .project { grid-template-columns: 1fr; }
+  .req { grid-template-columns: 1fr; gap: 2px; }
+  .req dd { margin-bottom: 8px; }
+  .hero { padding-block: 36px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
