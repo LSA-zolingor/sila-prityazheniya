@@ -141,3 +141,9 @@ tr.total td { font-weight: 700; }
 .photo { margin: 0; max-width: 26rem; display: grid; gap: 8px; }
 .photo img { border-radius: 10px; width: 100%; height: auto; display: block; }
 .photo figcaption { font-size: .9rem; color: var(--muted); }
+
+/* Галерея */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 12px; }
+.gallery figure { margin: 0; display: grid; gap: 6px; align-content: start; }
+.gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; display: block; height: auto; }
+.gallery figcaption { font-size: .88rem; color: var(--muted); }
