@@ -155,8 +155,11 @@ tr.total td { font-weight: 700; }
 .obj-photos img:first-child { aspect-ratio: auto; height: 100%; }
 @media (max-width: 640px) { .obj-photos { grid-template-columns: repeat(2, 1fr); } .obj-photos img:first-child { aspect-ratio: 3 / 4; } }
 
-/* До / после */
-.before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-.before-after figure { margin: 0; position: relative; }
-.before-after img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; display: block; height: auto; }
-.before-after figcaption { position: absolute; left: 8px; top: 8px; background: var(--plate); color: var(--plate-ink); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 2px 8px; border-radius: 4px; }
+/* Карточка с двумя фото: на широком экране занимает 2 колонки */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.duo figure { margin: 0; position: relative; }
+.duo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; height: auto; }
+.duo figcaption { position: absolute; left: 8px; top: 8px; background: var(--plate); color: var(--plate-ink); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 2px 8px; border-radius: 4px; }
+@media (min-width: 640px) { .obj-duo { grid-column: span 2; } }
+@media (max-width: 639px) { .duo img { aspect-ratio: 3 / 4; } }
+
