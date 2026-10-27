@@ -147,3 +147,10 @@ tr.total td { font-weight: 700; }
 .gallery figure { margin: 0; display: grid; gap: 6px; align-content: start; }
 .gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; display: block; height: auto; }
 .gallery figcaption { font-size: .88rem; color: var(--muted); }
+
+/* «Золинский» на всю ширину */
+.obj-wide { grid-column: 1 / -1; }
+.obj-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.obj-photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; height: auto; }
+.obj-photos img:first-child { aspect-ratio: auto; height: 100%; }
+@media (max-width: 640px) { .obj-photos { grid-template-columns: repeat(2, 1fr); } .obj-photos img:first-child { aspect-ratio: 3 / 4; } }
