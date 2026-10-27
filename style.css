@@ -163,3 +163,8 @@ tr.total td { font-weight: 700; }
 @media (min-width: 640px) { .obj-duo { grid-column: span 2; } }
 @media (max-width: 639px) { .duo img { aspect-ratio: 3 / 4; } }
 
+
+/* Визуализация проекта */
+.viz { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 8px; margin-top: 6px; }
+.viz figure { margin: 0; }
+.viz img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; display: block; }
